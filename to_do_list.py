@@ -31,8 +31,8 @@ def mark_task_completed():
             return
 
         print("Task List: ")
-        for idx, task in enumerate(tasks, 1):
-            print(f"{idx}. {task.strip()}")
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task.strip()}")
 
         task_number = int(input("Enter the task number to mark as completed: "))
         if 1 <= task_number <= len(tasks):
@@ -45,3 +45,17 @@ def mark_task_completed():
     except FileNotFoundError:
         print("No tasks registered yet.")
 
+
+def display_task_list():
+    try:
+        with open("task.txt", "r") as file:
+            tasks = file.readline()
+
+        if not tasks:
+            print("No tasks registered.")
+        else:
+            print("Task List: ")
+            for task in tasks:
+                print(f'- {task.strip()}')
+    except FileNotFoundError:
+        print("No tasks registered yet.")
