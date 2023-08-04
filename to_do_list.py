@@ -48,8 +48,8 @@ def mark_task_completed():
 
 def display_task_list():
     try:
-        with open("task.txt", "r") as file:
-            tasks = file.readline()
+        with open("tasks.txt", "r") as file:
+            tasks = file.readlines()
 
         if not tasks:
             print("No tasks registered.")
@@ -59,3 +59,24 @@ def display_task_list():
                 print(f'- {task.strip()}')
     except FileNotFoundError:
         print("No tasks registered yet.")
+
+
+def main():
+    while True:
+        display_menu()
+        option = input("Enter the desired option number: ")
+
+        if option == "1":
+            add_task()
+        elif option == "2":
+            mark_task_completed()
+        elif option == "3":
+            display_task_list()
+        elif option == "4":
+            print("Exixting the program...")
+            break
+        else:
+            print("Invalid option. ")
+
+if __name__ == "__main__":
+    main()
